@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Al Shifa Hospital | Future of Care</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #1e293b;
+            --accent: #06b6d4;
+            --bg: #f8fafc;
+            --white: #ffffff;
+            --text: #334155;
+            --shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        @keyframes pulse-glow {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4);
+            }
+
+            70% {
+                box-shadow: 0 0 0 15px rgba(37, 99, 235, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 99, 235, 0);
+            }
+        }
+
+        /* Navbar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 5%;
+            position: absolute;
+            width: 100%;
+            top: 0;
+            z-index: 10;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links img {
+            width: 24px;
+            cursor: pointer;
+            opacity: 0.6;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 10%;
+            position: relative;
+            background: radial-gradient(circle at top right, #e0f2fe, transparent 40%),
+                radial-gradient(circle at bottom left, #f1f5f9, transparent 40%);
+        }
+
+        .hero-content {
+            max-width: 500px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        h1 {
+            font-size: 4rem;
+            line-height: 1.1;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        h1 span {
+            background: linear-gradient(120deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p {
+            font-size: 1.1rem;
+            color: #64748b;
+            margin-bottom: 2.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--primary);
+            color: var(--white);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 25px -5px rgba(37, 99, 235, 0.4);
+        }
+
+        /* Abstract Graphics */
+        .graphic-container {
+            position: relative;
+            width: 50%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 1.2s ease-out;
+        }
+
+        .circle-bg {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border-radius: 50%;
+            z-index: -1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            padding: 2rem;
+            border-radius: 24px;
+            box-shadow: var(--shadow);
+            max-width: 320px;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            background: #dbeafe;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .status-badge {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            background: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            box-shadow: var(--shadow);
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: pulse-glow 2s infinite;
+        }
+
+        /* Features */
+        .features {
+            position: absolute;
+            bottom: 50px;
+            left: 10%;
+            display: flex;
+            gap: 3rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: var(--secondary);
+            font-weight: 600;
+            opacity: 0;
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        .feature-item:nth-child(1) {
+            animation-delay: 0.5s;
+        }
+
+        .feature-item:nth-child(2) {
+            animation-delay: 0.7s;
+        }
+
+        .feature-item:nth-child(3) {
+            animation-delay: 0.9s;
+        }
+
+        .check-icon {
+            color: var(--accent);
+            background: rgba(6, 182, 212, 0.1);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 900px) {
+            .hero {
+                flex-direction: column;
+                justify-content: center;
+                text-align: center;
+                padding-top: 100px;
+            }
+
+            .features {
+                position: static;
+                margin-top: 3rem;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .graphic-container {
+                display: none;
+            }
+
+            h1 {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2v20M2 12h20" />
+            </svg>
+            Al Shifa <span>Hospital</span>
+        </div>
+        <div class="nav-links">
+            <!-- Simple dots menu for minimalism -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="1" />
+                <circle cx="19" cy="12" r="1" />
+                <circle cx="5" cy="12" r="1" />
+            </svg>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Healthcare <br><span>Reimagined</span></h1>
+            <p>Experience the future of medical care with our AI-powered reception. Instant bookings, 24/7 support, and
+                world-class specialists.</p>
+            <button class="btn" onclick="document.getElementById('chat-toggle-btn').click()">Talk to AI Agent</button>
+        </div>
+
+        <div class="graphic-container">
+            <div class="circle-bg"></div>
+            <div class="card">
+                <div class="status-badge">
+                    <div class="status-dot"></div>
+                    Online Now
+                </div>
+                <div class="card-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                    </svg>
+                </div>
+                <h3 style="margin-bottom: 0.5rem;">Virtual Assistant</h3>
+                <p style="font-size: 0.9rem; margin-bottom: 0;">"Hello! I can help you schedule an appointment with Dr.
+                    Ahmed."</p>
+                <!-- Decorative lines -->
+                <div style="margin-top: 1.5rem; height: 4px; width: 60%; background: #f1f5f9; border-radius: 2px;">
+                </div>
+                <div style="margin-top: 0.5rem; height: 4px; width: 80%; background: #f1f5f9; border-radius: 2px;">
+                </div>
+            </div>
+        </div>
+
+        <div class="features">
+            <div class="feature-item">
+                <div class="check-icon">✓</div>
+                <span>Zero Wait Time</span>
+            </div>
+            <div class="feature-item">
+                <div class="check-icon">✓</div>
+                <span>Top Specialists</span>
+            </div>
+            <div class="feature-item">
+                <div class="check-icon">✓</div>
+                <span>Smart Booking</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Frontend Script for Chat Widget -->
+    <script src="/chat-widget.js"></script>
+
+</body>
+
+</html>
